@@ -1,0 +1,46 @@
+$back-black: #131313
+
+header
+  @extend .col
+  +size(100%, 80px)
+  box-shadow: 0 0 32px rgba(0,0,0,.15)
+
+  .nav
+    @extend .row
+    +position(space-between, center)
+
+    &__first,
+    &__second
+      padding: 0 20px
+      .nav__li
+        display: inline
+
+    // First navbar
+    &__first
+      +grid(5, 12)
+      background: $back-black
+      ul
+        +font(13px, 300)
+        // line-height: 32px
+      .nav__li
+        margin-right: 10px
+        a
+          color: color(gray)
+          &:hover
+            color: color(white)
+
+    // Second navbar
+    &__second
+      +grid(7, 12)
+      ul
+        +font(15px, 400)
+      .nav__li
+        margin-right: 30px
+        a
+          color: color(gray)
+          text-transform: uppercase
+          &:hover
+            color: color(black)
+
+    &__li:last-child
+      margin-right: 0
