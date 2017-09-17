@@ -27,11 +27,11 @@ LatestArticle.propTypes = {
 }
 
 
-const Latest = ({ news }) => {
+const Latest = ({ news, web }) => {
   const cl = "latest"
   return (
     <section className={`${cl}`}>
-      <h2 className={`${cl}__section-title`}><a href="https://thenextweb.com/latest">Latest news &gt;</a></h2>
+      <h2 className={`${cl}__section-title`}><a href={`http://${web.toLowerCase().replace(/\s/g,'')}.com`}>{web}</a></h2>
       <div className={`${cl}__wrapper`}>
         {news.map((art, i) => (
           <LatestArticle key={i} art={art} cl={`${cl}`}/>
@@ -43,6 +43,7 @@ const Latest = ({ news }) => {
 
 Latest.propTypes = {
   news: PropTypes.array.isRequired,
+  web: PropTypes.string.isRequired
 }
 
 export default Latest

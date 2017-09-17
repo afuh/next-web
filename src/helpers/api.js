@@ -1,11 +1,20 @@
 import axios from 'axios';
 import { apiKey } from './utils'
 
-const url = "https://newsapi.org/v1/articles?source=the-next-web"
+const handleError = (err) => console.log(err)
+const url = "https://newsapi.org/v1/articles?source="
 
-
-export function getNews() {
-  return axios.get(`${url}&sortBy=latest&apiKey=${apiKey}`)
+const call = (web) => {
+  return axios.get(`${url}${web}&apiKey=${apiKey}`)
     .then(res => res.data.articles)
-    .catch(err => console.log(err))
+    .catch(err => handleError(err))
 }
+
+export const getNews = () => (axios.all([
+    call('the-next-web'),
+    call('ign'),
+    call('ars-technica'),
+    call('national-geographic')
+  ]))
+  .then(([nextWeb, ign, arsTechnica, natGeo]) => ({ nextWeb, ign, arsTechnica, natGeo}))
+  .catch(err => handleError(err))

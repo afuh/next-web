@@ -12,19 +12,34 @@ class Main extends Component {
   constructor() {
     super()
     this.state = {
-      news: []
+      cover: [],
+      nextWeb: [],
+      ign: [],
+      arsTechnica: [],
+      natGeo: []
     }
+
   }
   componentDidMount(){
-    getNews().then(news => this.setState({ news }))
+    getNews()
+      .then(n => this.setState({
+        nextWeb: n.nextWeb,
+        ign: n.ign,
+        arsTechnica: n.arsTechnica,
+        natGeo: n.natGeo,
+        cover: [n.natGeo[0], n.ign[0], n.arsTechnica[0], n.nextWeb[0]]
+    }))
+  }
+  randomCover(arr){
+    return arr.sort(() => (arr.length/10) - Math.random())
   }
   render () {
-    const { news } = this.state
+    const { nextWeb, ign, arsTechnica, natGeo, cover } = this.state
     return (
       <DocumentTitle title={`${siteName}`}>
         <main style={{paddingTop: "80px"}}>
-          <Cover news={news.filter((a, i) => i < 3)}/>
-          <Latest news={news.filter((a, i) => i >= 2)}/>
+          <Cover news={this.randomCover(cover)}/>
+          <Latest web={'The Next Web'} news={nextWeb.filter((a, i) => i < 8)}/>
         </main>
       </DocumentTitle>
     )

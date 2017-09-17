@@ -28,7 +28,7 @@ class CoverArticle extends Component {
         opacity: this.state.opacity,
         transition: "opacity .4s"
       }
-    }
+    }    
     return (
       <article className={`${cl}__article`}
         onMouseEnter={() => this.handleOpacity(true)}
