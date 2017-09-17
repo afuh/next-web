@@ -1,0 +1,28 @@
+
+section.latest
+  +size(100%, 500px)
+  max-width: 1192px
+  margin: 0 auto
+  padding: 50px 0
+
+  .latest
+    &__section-title
+      margin: 0 1%
+      padding-bottom: 12px
+      a
+        color: $tnw-orange
+        letter-spacing: $spacing
+        &:hover
+          color: color(black)
+
+    &__wrapper
+      @extend .row
+      article
+        +grid(1, 4, 2)
+    &__header
+      margin-top: 8px
+    &__title
+      font-size: 18px
+      &:hover
+        color: $tnw-orange !important
+        text-decoration: underline
