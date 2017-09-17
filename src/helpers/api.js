@@ -15,7 +15,7 @@ export const getNews = () => (axios.all([
     call('ign'),
     call('ars-technica'),
     call('national-geographic', "top"),
-    call('google-news', 'top')
+    call('polygon', 'top')
   ]))
-  .then(([nextWeb, ign, arsTechnica, natGeo, googleNews]) => ({ nextWeb, ign, arsTechnica, natGeo, googleNews}))
+  .then(([nextWeb, ign, arsTechnica, natGeo, polygon]) => ({ nextWeb, ign, arsTechnica, natGeo, polygon}))
   .catch(err => handleError(err))
