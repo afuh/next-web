@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ArticleHeader from './ArticleHeader'
 
-class CoverArticle extends Component {
+export class CoverArticle extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -28,7 +28,7 @@ class CoverArticle extends Component {
         opacity: this.state.opacity,
         transition: "opacity .4s"
       }
-    }    
+    }
     return (
       <article className={`${cl}__article`}
         onMouseEnter={() => this.handleOpacity(true)}
@@ -43,7 +43,6 @@ class CoverArticle extends Component {
             art={{ title: art.title, author: art.author, date: art.publishedAt, url: art.url}}
             cl={cl}/>
         </div>
-
       </article>
     )
   }
@@ -58,9 +57,9 @@ CoverArticle.propTypes = {
 const Cover = ({ news }) => {
   const cl = "cover"
   return (
-    <section className={`${cl}`}>
+    <section className={cl}>
       {news.map((art, i) => {
-        if (i < 3) return <CoverArticle key={i} art={art} cl={`${cl}`}/>
+        if (i < 3) return <CoverArticle key={i} art={art} cl={cl}/>
       })}
     </section>
   )

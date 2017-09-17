@@ -27,7 +27,7 @@ const ArticleHeader = ({ art, cl, dark }) => {
         <h2 style={style.title} className={`${cl}__title`}>{title}</h2>
       </a>
       <ul className={`${cl}__credits`}>
-        <li style={style.credits}>by <a href="#" style={style.author}>{author}</a></li>
+        <li style={style.credits}><a href="#" style={style.author}>{author}</a></li>
         <li style={style.credits}>
           <i className="fa fa-clock-o"></i>
           <time dateTime={date}> {moment(date).fromNow()}</time>

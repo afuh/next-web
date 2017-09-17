@@ -16,9 +16,8 @@ const LatestArticle = ({ art, cl }) => {
           cl={cl}
           dark={true}/>
       </div>
-
     </article>
-    )
+  )
 }
 
 LatestArticle.propTypes = {
