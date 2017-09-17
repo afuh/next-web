@@ -1,0 +1,52 @@
+$cover-padding: 8px
+
+=cover-size()
+  +size(calc(100% - #{$cover-padding}), calc(100% - #{$cover-padding}))
+
+
+section.cover
+  @extend .col
+  height: 70vh
+
+  article
+    +size(35%, 50%)
+    padding: $cover-padding
+    position: relative
+    &:first-child
+      +size(65%, 100%)
+      .cover__title
+        font-size: 55px
+
+
+.cover
+  &__article
+    @extend .row
+    align-items: flex-end
+
+  &__img,
+  &__overlay
+    +cover-size
+    position: absolute
+    top: 4px
+    left: 4px
+  &__img
+    z-index: -1
+  &__overlay
+    background: linear-gradient(to top, #000, transparent)
+
+  &__header
+    width: 100%
+    z-index: 9999
+    padding: 10px
+  &__title
+    color: color(white)
+    margin-bottom: 10px
+    letter-spacing: -0.01em
+  &__credits
+    li
+      margin-right: 20px
+      display: inline
+      color: color(gray)
+      font-size: 14px
+      span
+        color: color(lightgray)
