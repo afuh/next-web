@@ -16,6 +16,14 @@ const LatestBox = ({ news, web }) => {
         if (i === 0) {
           return <ArticleBox key={i} art={art} cl={cl}/>
         }
+        else if (i === 1) {
+          return (
+            <li key={i} className={`${cl}__headlines feat`}>
+              <a href={art.url} className={`feat__title`}>{art.title}</a>
+              <a href={art.url} className={`feat__img`} style={{background: `url(${art.urlToImage}) center center / cover no-repeat`}}></a>
+            </li>
+          )
+        }
         else {
           return (
             <li key={i} className={`${cl}__headlines`}>

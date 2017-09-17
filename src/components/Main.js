@@ -14,7 +14,7 @@ class Main extends Component {
     super()
     this.state = {
       nextWeb: [],
-      ign: [],
+      newScientist: [],
       arsTechnica: [],
       natGeo: [],
       polygon: [],
@@ -26,18 +26,18 @@ class Main extends Component {
     getNews()
       .then(n => this.setState({
         nextWeb: n.nextWeb,
-        ign: n.ign,
+        newScientist: n.newScientist,
         arsTechnica: n.arsTechnica,
         natGeo: n.natGeo,
         polygon: n.polygon,
-        cover: [n.natGeo[r()], n.ign[r()], n.arsTechnica[r()], n.nextWeb[r()], n.polygon[r()]]
+        cover: [n.natGeo[r()], n.newScientist[r()], n.arsTechnica[r()], n.nextWeb[r()], n.polygon[r()]]
     }))
   }
   randomCover(arr){
     return arr.sort(() => (arr.length/10) - Math.random()).splice(1)
   }
   render () {
-    const { nextWeb, ign, arsTechnica, natGeo, polygon, cover } = this.state
+    const { nextWeb, newScientist, arsTechnica, natGeo, polygon, cover } = this.state
     return (
       <DocumentTitle title={`${siteName}`}>
         <main style={{paddingTop: "80px"}}>
@@ -47,10 +47,10 @@ class Main extends Component {
           <section className="web__columns">
             <LatestBox web={'National Geographic'} news={natGeo.filter((a, i) => i < 8)}/>
             <LatestBox web={'Polygon'} news={polygon.filter((a, i) => i < 8)}/>
-            <LatestBox web={'IGN'} news={ign.filter((a, i) => i < 8)}/>
+            <LatestBox web={'Ars Technica'} news={arsTechnica.filter((a, i) => i < 8)}/>
           </section>
 
-          <Latest web={'Ars Technica'} news={arsTechnica.filter((a, i) => i < 8)}/>
+          <Latest web={'New Scientist'} news={newScientist.filter((a, i) => i < 8)}/>
 
 
         </main>
@@ -63,5 +63,5 @@ export default Main;
 
 /*
     <LatestBox web={'National Geographic'} news={natGeo.filter((a, i) => i < 6)}/>
-    <LatestBox web={'IGN'} news={ign.filter((a, i) => i < 6)}/>
+    <LatestBox web={'IGN'} news={newScientist.filter((a, i) => i < 6)}/>
     */

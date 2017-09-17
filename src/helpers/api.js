@@ -12,10 +12,10 @@ const call = (web, sort="latest") => {
 
 export const getNews = () => (axios.all([
     call('the-next-web'),
-    call('ign'),
+    call('new-scientist', 'top'),
     call('ars-technica'),
     call('national-geographic', "top"),
     call('polygon', 'top')
   ]))
-  .then(([nextWeb, ign, arsTechnica, natGeo, polygon]) => ({ nextWeb, ign, arsTechnica, natGeo, polygon}))
+  .then(([nextWeb, newScientist, arsTechnica, natGeo, polygon]) => ({ nextWeb, newScientist, arsTechnica, natGeo, polygon}))
   .catch(err => handleError(err))

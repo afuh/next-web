@@ -2,7 +2,8 @@ section.web__columns
   @extend .row, .center
   padding: 0
   min-height: 700px
-
+  margin-top: 20px
+  margin-bottom: 40px
 
   .latestBox
     &__wrapper
@@ -29,3 +30,19 @@ section.web__columns
         color: color(gray)
         &:hover
           color: color(black)
+    &__headlines.feat
+        @extend .row
+        +position(space-between, center)
+        background: rgba(255,68,34,.06)
+        margin: 0 1%
+        height: 12%
+        padding: 0 0 0 8px
+        border: 1px solid rgba(0,0,0, 0.05)
+        .feat
+          &__title
+            +grid(4, 6)
+            +font(14px, 700)
+            color: $tnw-orange
+          &__img
+            height: 100%
+            +grid(2, 6)
