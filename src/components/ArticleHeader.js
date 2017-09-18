@@ -7,17 +7,17 @@ const ArticleHeader = ({ art, cl, dark }) => {
   const style = {
     title: {
       color: dark ? "#000" : "#fff",
-      marginBottom: "10px",
+      marginBottom: "2px",
       letterSpacing: "-.015em"
     },
     credits: {
-      marginRight: "20px",
+      marginRight: "14px",
       display: "inline",
-      color: "#9E9E9E",
-      fontSize: "14px"
+      color: "#d8d8d8",
+      fontSize: "12px"
     },
     author: {
-      color: "#d8d8d8"
+      color: "#9E9E9E"
     }
   }
   const { title, author, date, url } = art
@@ -27,7 +27,7 @@ const ArticleHeader = ({ art, cl, dark }) => {
         <h2 style={style.title} className={`${cl}__title`}>{title}</h2>
       </a>
       <ul className={`${cl}__credits`}>
-        {author.length ? <li style={style.credits}><a href="#" style={style.author}>{author}</a></li> : ""}
+        {author ? <li style={style.credits}><a href="#" style={style.author}>{author}</a></li> : ""}
         <li style={style.credits}>
           <i className="fa fa-clock-o"></i>
           <time dateTime={date}> {moment(date).fromNow()}</time>

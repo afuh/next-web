@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Nav = ({left, right, navClass}) => {
+import { Iconize } from '../helpers/utils'
+
+const Nav = ({left, right, navClass, icon}) => {
   return (
     <div className={`nav nav__${navClass}`}>
       <ul className="nav__left">
@@ -10,18 +12,26 @@ const Nav = ({left, right, navClass}) => {
         ))}
       </ul>
       <ul className="nav__right">
-        {right.map(item => (
-          <li key={item} className="nav__li"><a href="#">{item}</a></li>
-        ))}
+        {right.map(item => {
+          if (!icon) {
+            return <li key={item} className="nav__li"><a href="#">{item}</a></li>
+          } 
+          else {
+            return <Iconize iconName={item}/>
+          }
+        })}
       </ul>
     </div>
   )
 }
 
+
+
 Nav.propTypes = {
   left: PropTypes.array.isRequired,
   right: PropTypes.array.isRequired,
-  navClass: PropTypes.string.isRequired
+  navClass: PropTypes.string.isRequired,
+  icon: PropTypes.bool
 };
 
 
@@ -33,13 +43,13 @@ const Header = () => {
     },
     second: {
       left: ['Latests', 'Insights', 'Distract'],
-      right: ['Facebook', 'Twitter', 'Mail', 'Search']
+      right: ['facebook-official', 'twitter', 'envelope', 'search']
     }
   }
   return (
     <header>
       <Nav left={nav.first.left} right={nav.first.right} navClass={'first'}/>
-      <Nav left={nav.second.left} right={nav.second.right} navClass={'second'}/>
+      <Nav left={nav.second.left} right={nav.second.right} icon={true} navClass={'second'}/>
     </header>
   )
 }

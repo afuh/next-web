@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { apiKey } from './utils'
+import { apiKey } from './key'
 
 const handleError = (err) => console.log(err)
 const url = "https://newsapi.org/v1/articles?source="

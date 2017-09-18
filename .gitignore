@@ -6,4 +6,4 @@ node_modules
 dist
 images
 
-utils.js
+key.js

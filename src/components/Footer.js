@@ -1,20 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Iconize } from '../helpers/utils'
+
 const events = ["TNW NYC"]
 const companies = ["Amazon", "eBay", "Facebook", "Google", "Yahoo"];
 const topics = ["iPhone", "MacBook", "Playstation", "Samsung Galaxy", "YouTube"]
 const iconNames = ['facebook-official', 'twitter', 'youtube-play', 'instagram', 'pinterest-p', 'feed', 'envelope']
 const menu = ["Events", "About", "Team", "Advertise", "Jobs", "Contacts"]
 
-
-const Iconize = ({iconName}) => (
-  <a target="_blank" href="#" className="iconList__icon"><i className={`fa fa-${iconName}`} aria-hidden="true"></i></a>
-)
-
-Iconize.propTypes = {
-  iconName: PropTypes.string.isRequired
-}
 
 const SocialBlock = () => (
   <div>
