@@ -1,7 +1,57 @@
 .footer
   @extend .col
   background: #131313
-  min-height: 50vh
-  &__trending
+  // min-height: 60vh
+
+  &__trending,
+    margin: 40px auto
+    .wrapper
+      @extend .row
+      .block:not(:last-child)
+        margin-right: 120px
+      .block
+        h3
+          +font(16px, 200)
+          text-transform: uppercase
+          color: color(gray)
+          margin-bottom: 16px
+        li a
+          font-size: 16px
+          color: #f0f0f0
+          line-height: 1.8em
+          &:hover
+            color: $tnw-orange
+
   &__links
-  &__legal  
+    margin: 40px auto
+    // social
+    .iconList, .menu
+      @extend .row, .centrate
+      li
+        padding: 10px
+      &__icon
+        @extend .row, .centrate
+        +size(40px, 40px)
+        border-radius: 50%
+        color: color(whitesmoke)
+        background: color(black)
+        border: 1px solid color(black)
+        transition: background .3s
+        &:hover
+          background: #131313
+    .menu
+      a
+        text-transform: uppercase
+        color: color(gray)
+        font-size: 12px
+        &:hover
+          color: color(whitesmoke)
+
+  &__legal
+    background: #000
+    .wrapper
+      padding: 40px 0
+      span
+        @extend .row, .centrate
+        +font(13px, 200)
+        color: color(gray)
