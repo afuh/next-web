@@ -16,6 +16,8 @@ header
       padding: 0 20px
       .nav__li
         display: inline
+        &:last-child
+          margin-right: 0
 
     // First navbar
     &__first
@@ -43,6 +45,13 @@ header
           text-transform: uppercase
           &:hover
             color: color(black)
+            cursor: pointer
 
-    &__li:last-child
-      margin-right: 0
+      .nav__right
+        @extend .row
+        +position(space-around, center)
+        height: 100%
+        .nav__li
+          margin: 0 10px
+          a
+            font-size: 18px

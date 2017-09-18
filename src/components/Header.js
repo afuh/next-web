@@ -15,9 +15,9 @@ const Nav = ({left, right, navClass, icon}) => {
         {right.map(item => {
           if (!icon) {
             return <li key={item} className="nav__li"><a href="#">{item}</a></li>
-          } 
+          }
           else {
-            return <Iconize iconName={item}/>
+            return <li key={item} className="nav__li"><Iconize iconName={item}/></li>
           }
         })}
       </ul>
