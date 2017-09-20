@@ -1,0 +1,63 @@
+// 1024: logo en el nav,
+  // 3 columnas en latest
+  // 2 columnas en latestbox
+
+// 768 todo una columa
+    // desaparece nav y aparece icono de nav
+    // latest cambia layout
+
++break(1024px)
+  section.latest
+    .latest__wrapper
+      article
+        +grid(1, 3, 2)
+
+  section.web__columns
+    .latestBox__wrapper
+      +grid(1, 2, 1)
+
+
++break(sm)
+  main
+    padding-top: 64px !important
+  header
+    background: #fff
+    height: 60px
+    justify-content: center
+    .nav__first
+      display: none
+
+  section.cover
+    height: auto
+    flex-wrap: nowrap
+    article
+      width: 100% !important
+      min-height: 30vh
+      .cover__title
+        font-size: 30px !important
+
+
+  section.latest
+    .latest__wrapper
+      article
+        +grid(1, 1, 1)
+      article.latest__article
+        display: flex
+        flex-flow: row
+        .latest
+          &__img
+            +grid(1, 4, 2)
+          &__header
+            +grid(3, 4, 2)
+            h2
+              font-size: 15px
+
+  section.web__columns
+    .latestBox__wrapper
+      +grid(1, 1, 1)
+      margin-top: 30px
+
+  .footer__trending
+    .wrapper
+      .block
+        margin: 0 12px!important
