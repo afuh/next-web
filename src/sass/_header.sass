@@ -3,26 +3,23 @@ $back-black: #131313
 header
   @extend .col
   +size(100%, 80px)
-  box-shadow: 0 0 32px rgba(0,0,0,.15)
-  position: fixed
-  z-index: 9999999999
 
   .nav
     @extend .row
-    +position(space-between, center)
-
     &__first,
     &__second
-      padding: 0 20px
       .nav__li
         display: inline
         &:last-child
           margin-right: 0
 
-    // First navbar
+    // First navbar (black navbar)
     &__first
+      z-index: 999999
+      +position(space-between, center)
       +grid(5, 12)
       background: $back-black
+      padding: 0 20px
       ul
         +font(13px, 300)
       .nav__li
@@ -32,26 +29,62 @@ header
           &:hover
             color: color(white)
 
-    // Second navbar
+    // Second navbar (Main nav)
     &__second
-      background: #fff
+      box-shadow: 0 0 32px rgba(0,0,0,.15)
       +grid(7, 12)
-      ul
-        +font(15px, 400)
-      .nav__li
-        margin-right: 30px
-        a
-          color: color(gray)
-          text-transform: uppercase
-          &:hover
-            color: color(black)
-            cursor: pointer
+      background: #fff
+      a
+        color: color(gray)
+        text-transform: uppercase
+        font-size: 14px
+        &:hover
+          color: color(black)
 
-      .nav__right
-        @extend .row
-        +position(space-around, center)
-        height: 100%
-        .nav__li
-          margin: 0 10px
-          a
-            font-size: 18px
+      .logo
+        @extend .col, .centrate
+        +gradient
+        cursor: pointer
+        max-width: 0
+        img
+          transition: all .4s ease
+          transform: translateY(-40px)
+
+
+      .nav
+        &__left,
+        &__right
+          @extend .row, .centrate
+          height: 100%
+          .nav__li
+            height: 100%
+            a
+              @extend .col, .centrate
+              height: 100%
+              padding: 0 16px
+
+        &__left
+          justify-content: flex-start
+          flex: 2
+
+        &__right
+          .nav__li
+            a
+              font-size: 18px
+            &:last-child a
+              border-left: 1px solid color(lightgray)
+
+
+
+.fixed-nav
+  .nav__second
+    z-index: 999999
+    background: #fff
+    width: 100%
+    position: fixed
+    .logo
+      display: flex
+      max-width: 100px
+      padding: 20px
+      img
+        transform: translateY(0)

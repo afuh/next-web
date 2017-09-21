@@ -40,7 +40,7 @@ class Main extends Component {
     const { nextWeb, newScientist, arsTechnica, natGeo, polygon, cover } = this.state
     return (
       <DocumentTitle title={`${siteName}`}>
-        <main style={{paddingTop: "84px"}}>
+        <main>
           <Cover news={this.randomCover(cover)}/>
           <Latest web={'The Next Web'} news={nextWeb.filter((a, i) => i < 8)}/>
 
