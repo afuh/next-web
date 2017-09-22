@@ -1,11 +1,3 @@
-// 1024: logo en el nav,
-  // 3 columnas en latest
-  // 2 columnas en latestbox
-
-// 768 todo una columa
-    // desaparece nav y aparece icono de nav
-    // latest cambia layout
-
 +break(1024px)
   section.latest
     .latest__wrapper
@@ -18,14 +10,20 @@
 
 
 +break(sm)
-  main
-    padding-top: 64px !important
   header
-    background: #fff
-    height: 60px
-    justify-content: center
-    .nav__first
-      display: none
+    .nav
+      &__first,
+        display: none
+      &__second
+        justify-content: space-between
+        .nav__left
+          display: none
+        .nav__right
+          .nav__li:not(:last-child)
+            display: none
+          .nav__li:last-child
+            display: block
+
 
   section.cover
     height: auto

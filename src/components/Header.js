@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 
 import { Iconize, logo } from '../helpers/utils'
 
+const nav = {
+  first: {
+    left: ['News', 'Conference', 'Index', 'TQ', 'Deals', 'Answers', 'TNW X'],
+    right: ['About', 'Team', 'Advertise', 'Jobs', 'Contact']
+  },
+  second: {
+    left: ['Latests', 'Insights', 'Distract'],
+    right: ['facebook-official', 'twitter', 'envelope', 'ellipsis-h', 'search', 'bars']
+  }
+}
+
+
 const Nav = ({ left, right, navClass }) => {
   return (
     <div className={`nav nav__${navClass}`}>
@@ -31,6 +43,7 @@ class MainNav extends Component {
   constructor(){
     super()
     this.state = {
+      showNav: false,
       navTop: 0,
       navHeight: { height: 0 }
     }
@@ -57,11 +70,40 @@ class MainNav extends Component {
       document.body.classList.remove('fixed-nav')
     }
   }
+  handleHover(hover = false){
+    this.setState({ showNav: hover && true })
+  }
+  hiddenNav(){
+    return (
+      <div
+        className="hidden_nav-cont"
+        style={{
+          top: this.nav.offsetHeight + "px",
+          transform: `translateY(${this.state.showNav ? 0 : -100}%)`
+        }}
+        onMouseEnter={() => this.handleHover(true)}
+        onMouseLeave={() => this.handleHover()}>
+        <ul className="hidden_nav">
+          {nav.first.left.map(item => (
+            <li key={item} className="nav__li"><a href="#">{item}</a></li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
   render () {
     const { navClass, left, right } = this.props
     return (
-      <nav className={`nav nav__${navClass}`} ref={nav => this.nav = nav} style={this.state.navHeight}>
-          <div className="logo"><img src={logo} alt="TNW logo"/></div>
+      <nav
+        className={`nav nav__${navClass}`}
+        ref={nav => this.nav = nav}
+        style={this.state.navHeight}>
+          <div className="logo"
+            onMouseEnter={() => this.handleHover(true)}
+            onMouseLeave={() => this.handleHover()}>
+            <img src={logo} alt="TNW logo"/>
+            {this.nav && this.hiddenNav()}
+          </div>
           <ul className="nav__left">
             {left.map(item => (
               <li key={item} className="nav__li"><a href="#">{item}</a></li>
@@ -85,16 +127,6 @@ MainNav.propTypes = {
 
 
 const Header = () => {
-  const nav = {
-    first: {
-      left: ['News', 'Conference', 'Index', 'TQ', 'Deals', 'Answers', 'TNW X'],
-      right: ['About', 'Team', 'Advertise', 'Jobs', 'Contact']
-    },
-    second: {
-      left: ['Latests', 'Insights', 'Distract'],
-      right: ['facebook-official', 'twitter', 'envelope', 'ellipsis-h', 'search']
-    }
-  }
   return (
     <header>
       <Nav left={nav.first.left} right={nav.first.right} navClass={'first'}/>
