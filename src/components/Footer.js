@@ -19,6 +19,7 @@ const SocialBlock = () => (
         </li>
       ))}
     </ul>
+
     <ul className="menu">
       {menu.map(i => (
         <li key={i}>
@@ -33,6 +34,7 @@ const TrendingBlock = ({title, cl, list}) => {
   return (
     <div className={`block block__${cl}`}>
       <h3>{title}</h3>
+
       <ul>
         {list.map(i => (
           <li key={i}>

@@ -14,20 +14,23 @@ const nav = {
   }
 }
 
-
+// First nav (black navigator bar)
 const Nav = ({ left, right, navClass }) => {
   return (
     <div className={`nav nav__${navClass}`}>
+
       <ul className="nav__left">
         {left.map(item => (
           <li key={item} className="nav__li"><a href="#">{item}</a></li>
         ))}
       </ul>
+
       <ul className="nav__right">
         {right.map(item => (
           <li key={item} className="nav__li"><a href="#">{item}</a></li>
         ))}
       </ul>
+
     </div>
   )
 }
@@ -50,20 +53,19 @@ class MainNav extends Component {
     this.handleScroll = this.handleScroll.bind(this)
   }
   componentDidMount(){
+    window.addEventListener('scroll', this.handleScroll);
     this.setState({
       navTop: this.nav.offsetTop,
       navHeight: {
         height: this.nav.offsetHeight + "px"
       }
     })
-    window.addEventListener('scroll', this.handleScroll);
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
   handleScroll(){
-    const { navTop } = this.state
-    if (window.scrollY >= navTop) {
+    if (window.scrollY >= this.state.navTop) {
       document.body.classList.add('fixed-nav')
     }
     else {
@@ -74,20 +76,23 @@ class MainNav extends Component {
     this.setState({ showNav: hover && true })
   }
   hiddenNav(){
+    const position = {
+      top: this.nav.offsetHeight + "px",
+      transform: `translateY(${this.state.showNav ? 0 : -100}%)`
+    }
     return (
       <div
         className="hidden_nav-cont"
-        style={{
-          top: this.nav.offsetHeight + "px",
-          transform: `translateY(${this.state.showNav ? 0 : -100}%)`
-        }}
+        style={position}
         onMouseEnter={() => this.handleHover(true)}
         onMouseLeave={() => this.handleHover()}>
+
         <ul className="hidden_nav">
           {nav.first.left.map(item => (
             <li key={item} className="nav__li"><a href="#">{item}</a></li>
           ))}
         </ul>
+
       </div>
     )
   }
@@ -98,22 +103,26 @@ class MainNav extends Component {
         className={`nav nav__${navClass}`}
         ref={nav => this.nav = nav}
         style={this.state.navHeight}>
+
           <div className="logo"
             onMouseEnter={() => this.handleHover(true)}
             onMouseLeave={() => this.handleHover()}>
             <img src={logo} alt="TNW logo"/>
             {this.nav && this.hiddenNav()}
           </div>
+
           <ul className="nav__left">
             {left.map(item => (
               <li key={item} className="nav__li"><a href="#">{item}</a></li>
             ))}
           </ul>
+
           <ul className="nav__right">
             {right.map(item => (
               <li key={item} className="nav__li"><Iconize iconName={item}/></li>
             ))}
           </ul>
+
       </nav>
     )
   }

@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
 
 import { siteName } from '../helpers/utils';
 import { getNews } from '../helpers/api';
 
-import Cover from './Cover';
 import Latest from './Latest';
 import LatestBox from './LatestBox';
+import { ArticleBox } from './ArticleParts'
+
+const Cover = ({ news }) => {
+  const cl = "cover"
+  return (
+    <section className={cl}>
+      {news.map((art, i) => {
+        if (i < 3) return <ArticleBox key={i} art={art} cl={cl}/>
+      })}
+    </section>
+  )
+}
+
+Cover.propTypes = {
+  news: PropTypes.array.isRequired,
+}
 
 
 class Main extends Component {
@@ -41,7 +57,9 @@ class Main extends Component {
     return (
       <DocumentTitle title={`${siteName}`}>
         <main>
+
           <Cover news={this.randomCover(cover)}/>
+          
           <Latest web={'The Next Web'} news={nextWeb.filter((a, i) => i < 8)}/>
 
           <section className="web__columns">
@@ -52,7 +70,6 @@ class Main extends Component {
 
           <Latest web={'New Scientist'} news={newScientist.filter((a, i) => i < 8)}/>
 
-
         </main>
       </DocumentTitle>
     )
@@ -60,8 +77,3 @@ class Main extends Component {
 }
 
 export default Main;
-
-/*
-    <LatestBox web={'National Geographic'} news={natGeo.filter((a, i) => i < 6)}/>
-    <LatestBox web={'IGN'} news={newScientist.filter((a, i) => i < 6)}/>
-    */

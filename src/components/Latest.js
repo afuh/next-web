@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ArticleHeader from './ArticleHeader'
+import { ArticleHeader } from './ArticleParts'
 
 const LatestArticle = ({ art, cl }) => {
   return (
     <article className={`${cl}__article`}>
+
       <a href={art.url}className={`${cl}__img`}>
         <img src={art.urlToImage} alt={art.title}/>
       </a>
@@ -16,6 +17,7 @@ const LatestArticle = ({ art, cl }) => {
           cl={cl}
           dark={true}/>
       </div>
+
     </article>
   )
 }
@@ -30,12 +32,17 @@ const Latest = ({ news, web }) => {
   const cl = "latest"
   return (
     <section className={`${cl}`}>
-      <h2 className={`${cl}__section-title`}><a href={`http://${web.toLowerCase().replace(/\s/g,'')}.com`}>{web}</a></h2>
+
+      <h2 className={`${cl}__section-title`}>
+        <a href={`http://${web.toLowerCase().replace(/\s/g,'')}.com`}>{web}</a>
+      </h2>
+
       <div className={`${cl}__wrapper`}>
         {news.map((art, i) => (
           <LatestArticle key={i} art={art} cl={`${cl}`}/>
         ))}
       </div>
+
     </section>
   )
 }
